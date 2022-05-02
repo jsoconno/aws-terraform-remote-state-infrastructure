@@ -1,0 +1,24 @@
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - "modules/dynamodb/*"
+    exclude:
+      - "modules/dynamodb/*.md"
+
+resources:
+  repositories:
+    - repository: yaml-templates
+      name: "Dealer Data Sharing/_git/yaml-templates"
+      type: git
+      ref: main
+
+stages:
+  - template: stages/builds/terraform.yml@yaml-templates
+    parameters:
+      terraform_version: "1.1.6"
+      terraform_folder: ./modules/dynamodb
+      tflint_config_file: $(System.DefaultWorkingDirectory)/.tflint.hcl
+      publish_artifacts: false

@@ -1,0 +1,9 @@
+# Use this file to add tfsec exclusions and overrides
+
+# Severity Overrides
+severity_overrides:
+
+# Excluding Checks
+exclude:
+  - aws-dynamodb-enable-recovery
+  - aws-iam-no-policy-wildcards
