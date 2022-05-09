@@ -10,31 +10,6 @@ variable "name" {
   }
 }
 
-variable "billing_mode" {
-  type = string
-  description = "Controls how you are charged for read and write throughput and how you manage capacity.  Valid values include 'PAY_PER_REQUEST', 'PROVISIONED', and 'AUTOSCALED'."
-  default     = "PAY_PER_REQUEST"
-
-  validation {
-    condition = (
-      contains(["PAY_PER_REQUEST", "PROVISIONED", "AUTOSCALED"], var.billing_mode)
-    )
-    error_message = "Must be one of: PAY_PER_REQUEST, PROVISIONED, or AUTOSCALED. Defaults to PAY_PER_REQUEST."
-  }
-}
-
-variable "read_capacity" {
-  type = number
-  description = "The number of read units for this table. If the billing_mode is PROVISIONED, this field is required."
-  default = 20
-}
-
-variable "write_capacity" {
-  type = number
-  description = "The number of write units for this table. If the billing_mode is PROVISIONED, this field is required."
-  default = 20
-}
-
 variable "hash_key" {
   type = object({
     name = string
@@ -104,26 +79,12 @@ variable "local_secondary_index_map" {
   type = any
   description = "Describe an LSI on the table; these can only be allocated at creation so you cannot change this definition after you have created the resource."
   default = []
-
-  # validation {
-  #   condition = (
-
-  #   )
-  #   error_message = ""
-  # }
 }
 
 variable "global_secondary_index_map" {
   type = any
   description = "Describe a GSI for the table; subject to the normal limits on the number of GSIs, projected attributes, etc."
   default = []
-
-  # validation {
-  #   condition = (
-
-  #   )
-  #   error_message = ""
-  # }
 }
 
 variable "point_in_time_recovery" {
