@@ -1,5 +1,5 @@
 # AWS Terraform Remote State Infrastructure
-This repo provides everything needed to stand up a secure by design S3 bucket and DynamoDb table to enable remote state management with Terraform on AWS.
+This repo provides everything needed to stand up an S3 bucket and DynamoDb table that are secure by design to enable remote state management with Terraform on AWS.
 
 # What is in the box?
 An S3 bucket for remote state management and a DynamoDb table for state locking.  Everything is configured using security best practices.  Nothing is public and everything is encrypted / decrypted using KMS keys.
