@@ -14,7 +14,7 @@ data "aws_iam_policy_document" "allow_access_dynamodb" {
       "dynamodb:*"
     ]
     resources = [
-      var.billing_mode != "AUTOSCALED" ? aws_dynamodb_table.standard[0].arn : aws_dynamodb_table.autoscaled[0].arn
+      aws_dynamodb_table.standard.arn
     ]
   }
 
