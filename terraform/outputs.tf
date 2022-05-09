@@ -1,4 +1,4 @@
-output "terraform_backend_config" {
+output "backend" {
     value = <<EOT
     backend "s3" {
       bucket = "${module.s3.name}"
